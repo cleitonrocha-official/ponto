@@ -1,10 +1,13 @@
 package br.com.cleiton.microservice.ponto.core.handler.bo;
 
+import static br.com.cleiton.microservice.ponto.core.dto.enums.BatidaTipoMarcacao.SAIDA_ALMOCO;
 import static java.time.DayOfWeek.SATURDAY;
 import static org.junit.Assert.assertEquals;
 
 import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.TextStyle;
 import java.util.Arrays;
 import java.util.Locale;
@@ -13,6 +16,7 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaLimiteExcedidaException;
+import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNaoCompletouHorarioDeAlmocoException;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNoFinalDeSemanaException;
 import br.com.cleiton.microservice.ponto.core.dto.BatidaCoreDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -63,7 +67,32 @@ public class BatidaBOTest {
 		bo.validaLimiteDeMarcacaoDePontoDoDia(pontosDoDia );
 	}
 	
+	@Test(expected = BatidaNaoCompletouHorarioDeAlmocoException.class)
+	public void naoDeveDeixarRegistrarBatidaPoiDeveHaverNoMinimo1HoraDeAlmoco() {
+		
+		BatidaCoreDTO ultimoBatida = BatidaCoreDTO
+				.builder()
+					.marcadoEm(LocalDateTime.of(2020, 10, 26, 15, 30))
+					.tipo(SAIDA_ALMOCO)
+				.build();
+		LocalDateTime dataHora = LocalDateTime.of(2020, 10, 26, 15, 50);
+		assertEquals("diferenca de 20 min", 20, Duration.between(ultimoBatida.getMarcadoEm(), dataHora).toMinutes());
+		bo.validaMinimoDeHorarioDeAlmoco(dataHora, ultimoBatida);
+	}
 	
+	@Test
+	public void deveDeixarRegistrarBatidaPoiDeveHaverNoMinimo1HoraDeAlmoco() {
+		
+		
+		BatidaCoreDTO ultimoBatida = BatidaCoreDTO
+				.builder()
+					.marcadoEm(LocalDateTime.of(2020, 10, 26, 15, 30))
+					.tipo(SAIDA_ALMOCO)
+				.build();
+		LocalDateTime dataHora = LocalDateTime.of(2020, 10, 26, 16, 30);
+		assertEquals("diferenca de 60 min", 60, Duration.between(ultimoBatida.getMarcadoEm(), dataHora).toMinutes());
+		bo.validaMinimoDeHorarioDeAlmoco(dataHora, ultimoBatida);
+	}
 
 	
 	

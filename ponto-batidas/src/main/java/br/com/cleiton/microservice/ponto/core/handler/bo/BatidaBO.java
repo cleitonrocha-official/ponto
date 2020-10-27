@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaLimiteExcedidaException;
+import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNaoCompletouHorarioDeAlmocoException;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNoFinalDeSemanaException;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.RuntimeExceptionCommon;
 import br.com.cleiton.microservice.ponto.core.dto.BatidaCoreDTO;
@@ -65,7 +66,7 @@ public class BatidaBO {
 	public void validaMinimoDeHorarioDeAlmoco(LocalDateTime dataHora, BatidaCoreDTO ultimoBatida) {
 		if (ultimoBatida.getTipo() == SAIDA_ALMOCO
 				&& minimoHorarioDeAlmoço(dataHora, ultimoBatida.getMarcadoEm())) {
-			throw new RuntimeExceptionCommon(400,"Não completou o minimo de 1 hora de almoço");
+			throw new BatidaNaoCompletouHorarioDeAlmocoException();
 		}
 	}
 
