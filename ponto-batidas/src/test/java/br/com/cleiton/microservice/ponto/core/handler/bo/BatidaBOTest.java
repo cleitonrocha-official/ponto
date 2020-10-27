@@ -7,7 +7,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class BatidaBOTest {
 		
 		var sabado = LocalDate.of(2020, 10, 24);
 		log.info("validando {} na tentativa de marcar hora ", getDiaDaSemanaDoLocalDate(sabado));
-		assertEquals(SATURDAY, sabado.getDayOfWeek());
+		assertEquals("dia da semana = sabado",SATURDAY, sabado.getDayOfWeek());
 		bo.validaTentaivaDeMarcarNoFinalDeSemana(sabado);
 	}
 	
@@ -38,7 +37,7 @@ public class BatidaBOTest {
 		
 		var domingo = LocalDate.of(2020, 10, 25);
 		log.info("validando {} na tentativa de marcar hora ", getDiaDaSemanaDoLocalDate(domingo));
-		assertEquals(DayOfWeek.SUNDAY, domingo.getDayOfWeek());
+		assertEquals("dia da semana = domingo",DayOfWeek.SUNDAY, domingo.getDayOfWeek());
 		bo.validaTentaivaDeMarcarNoFinalDeSemana(domingo);
 	}
 	
@@ -60,8 +59,11 @@ public class BatidaBOTest {
 		
 		var pontosDoDia = 
 				Arrays.asList(new BatidaCoreDTO(),new BatidaCoreDTO(),new BatidaCoreDTO(),new BatidaCoreDTO()) ;
+		assertEquals("quantida de pontos do dia = 4",pontosDoDia.size(), 4);
 		bo.validaLimiteDeMarcacaoDePontoDoDia(pontosDoDia );
 	}
+	
+	
 
 	
 	
