@@ -1,0 +1,16 @@
+
+server:
+  port: 8060
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+      
+management:  endpoints:    web:      exposure:        include:        - "routes"
+zuul:
+  ribbon:
+      eager-load:
+         enabled: true  sensitive-headers:  - Cookie, Authorization 

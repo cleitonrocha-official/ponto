@@ -1,0 +1,29 @@
+
+server:  port: 8081
+
+eureka:  client:    register-with-eureka: true
+    fetch-registry: true
+    service-url:      defaultZone: http://localhost:8761/eureka
+
+      
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8088/user
+
+hystrix:
+  shareSecurityContext: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 10000
+
+message:
+  error:
+    naoAutorizado: Não possui acesso para este recurso 
+    badRequest: Requisicao com os parametros informados não foi efetiva
+    serverError: Ocorreu um erro no lado do servidor
+    userInfo: =( Ops! Tivemos algum erro com o seu pedido. Tente novamente.
+  

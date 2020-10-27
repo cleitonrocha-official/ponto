@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: alocacoes
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+niws:
+  loadbalancer:
+    availabilityFilteringRule:
+      activeConnectionsLimit:  12147483647    
