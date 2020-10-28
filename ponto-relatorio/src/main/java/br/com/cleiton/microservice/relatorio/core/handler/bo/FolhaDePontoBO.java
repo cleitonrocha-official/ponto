@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.toList;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Optional;
 
 import br.com.cleiton.microservice.relatorio.core.dto.AlocacaoProjetoCoreDTO;
 import br.com.cleiton.microservice.relatorio.core.dto.BatidaCoreDTO;
@@ -57,6 +56,7 @@ public class FolhaDePontoBO {
 		return somaDasJornadas;
 	}
 
+	
 	public FolhaDePontoCoreDTO constroiFolhaDePonto(String mesAno,
 			final List<DiaDeTrabalhoCoreDTO> todasBatidasDoMesAno,
 			final List<AlocacaoProjetoCoreDTO> todasAlocacoesDoMesAno,

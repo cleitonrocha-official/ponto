@@ -19,4 +19,8 @@ public class AlocacaoProjetoCoreDTO {
 	private LocalDate criadoNoDia;
 	private String usuario;
 	
+	public AlocacaoProjetoCoreDTO(Duration tempo){
+		this.tempo = tempo;
+	}
+	
 }

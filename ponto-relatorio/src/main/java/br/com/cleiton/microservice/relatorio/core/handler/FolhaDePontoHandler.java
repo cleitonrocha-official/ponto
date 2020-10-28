@@ -1,18 +1,9 @@
 package br.com.cleiton.microservice.relatorio.core.handler;
 
-import static java.util.stream.Collectors.toList;
-
-import java.time.Duration;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cleiton.microservice.relatorio.core.dto.AlocacaoProjetoCoreDTO;
-import br.com.cleiton.microservice.relatorio.core.dto.BatidaCoreDTO;
-import br.com.cleiton.microservice.relatorio.core.dto.DiaDeTrabalhoCoreDTO;
 import br.com.cleiton.microservice.relatorio.core.dto.FolhaDePontoCoreDTO;
-import br.com.cleiton.microservice.relatorio.core.dto.RegistrosCoreDTO;
 import br.com.cleiton.microservice.relatorio.core.handler.bo.FolhaDePontoBO;
 import br.com.cleiton.microservice.relatorio.core.port.inbound.FolhaDePontoPortInbound;
 import br.com.cleiton.microservice.relatorio.core.port.outbound.AlocacoesPortOutbound;

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cleiton.microservice.relatorio.core.dto.FolhaDePontoCoreDTO;
 import br.com.cleiton.microservice.relatorio.core.port.inbound.FolhaDePontoPortInbound;
 import br.com.cleiton.microservice.relatorio.inbound.folha.rest.json.response.AlocacaoProjetoResponseJson;
 import br.com.cleiton.microservice.relatorio.inbound.folha.rest.json.response.FolhaDePontoResponseJson;
@@ -21,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FolhaDePagamentoAdapter {
 
-	
 	@Autowired
 	private FolhaDePontoPortInbound folhaDePontoPortInbound;
 	
