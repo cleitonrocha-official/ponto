@@ -1,4 +1,4 @@
-package br.com.cleiton.microservice.alocarhora.core.handler.bo;
+package br.com.cleiton.microservice.relatorio.core.handler.bo;
 
 import static org.junit.Assert.assertEquals;
 

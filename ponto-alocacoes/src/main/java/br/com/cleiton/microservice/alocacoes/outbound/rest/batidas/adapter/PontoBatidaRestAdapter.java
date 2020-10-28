@@ -40,7 +40,7 @@ public class PontoBatidaRestAdapter implements PontoBatidaPortOutbound {
 		headers.set("Authorization", "Bearer" + details.getTokenValue());
 		var client = new RestTemplate();
 		var entity = new HttpEntity<>(null, headers);
-		var url = String.format("http://localhost:8080/tempo?dia=%s&mes=%s&ano=%s", dia.getDayOfMonth(),dia.getMonthValue(),dia.getYear());
+		var url = String.format("http://localhost:8080/batida/tempo?dia=%s&mes=%s&ano=%s", dia.getDayOfMonth(),dia.getMonthValue(),dia.getYear());
 		
 		
 		val jornada = client.exchange(url, HttpMethod.GET, entity, JornadaResponseJson.class).getBody();
