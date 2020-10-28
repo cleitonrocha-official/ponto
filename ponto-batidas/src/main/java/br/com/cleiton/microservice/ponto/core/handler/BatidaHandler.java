@@ -44,12 +44,12 @@ public class BatidaHandler implements BatidaPortInbound {
 
 		val novaBatida = ultimoBatidaOptional.map(ultimoBatida -> {
 
-			// Deve haver no mínimo 1 hora de almoço.
+			// ● Deve haver no mínimo 1 hora de almoço.
 			batidaBO.validaMinimoDeHorarioDeAlmoco(dataHora, ultimoBatida);
 
 			return batidaBO.novoPontoComProximoTipoDeMarcacao(dataHora, ultimoBatida.getTipo());
 
-		}).orElse(batidaBO.iniciaJornada(dataHora));
+		}).orElse(new BatidaCoreDTO(dataHora));
 
 		batidaPortOutbound.marcar(novaBatida, usuarioId);
 

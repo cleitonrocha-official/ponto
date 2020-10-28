@@ -1,6 +1,5 @@
 package br.com.cleiton.microservice.ponto.core.handler.bo;
 
-import static br.com.cleiton.microservice.ponto.core.dto.enums.BatidaTipoMarcacao.ENTRADA_JORNADA;
 import static br.com.cleiton.microservice.ponto.core.dto.enums.BatidaTipoMarcacao.SAIDA_ALMOCO;
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
@@ -14,10 +13,11 @@ import java.util.List;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaLimiteExcedidaException;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNaoCompletouHorarioDeAlmocoException;
 import br.com.cleiton.microservice.ponto.core.commons.exceptions.BatidaNoFinalDeSemanaException;
-import br.com.cleiton.microservice.ponto.core.commons.exceptions.RuntimeExceptionCommon;
 import br.com.cleiton.microservice.ponto.core.dto.BatidaCoreDTO;
 import br.com.cleiton.microservice.ponto.core.dto.enums.BatidaTipoMarcacao;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class BatidaBO {
 
 	//SINGLETON CLASS
@@ -25,7 +25,7 @@ public class BatidaBO {
 	private static BatidaBO instace;
 	
 	private BatidaBO () {
-		
+		log.info("Singleton instanciado");
 	}
 	
 	public static BatidaBO getInstace() {
@@ -70,9 +70,6 @@ public class BatidaBO {
 		}
 	}
 
-	public BatidaCoreDTO iniciaJornada(LocalDateTime dataHora) {
-		return new BatidaCoreDTO(dataHora, ENTRADA_JORNADA);
-	}
 
 	public boolean minimoHorarioDeAlmoço(LocalDateTime dataHora, LocalDateTime dataHoraUltimoBatida) {
 		return Duration.between(dataHoraUltimoBatida, dataHora).toMinutes() < 60L;

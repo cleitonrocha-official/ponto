@@ -93,11 +93,8 @@ public class BatidaBOTest {
 		assertEquals("diferenca de 60 min", 60, Duration.between(ultimoBatida.getMarcadoEm(), dataHora).toMinutes());
 		bo.validaMinimoDeHorarioDeAlmoco(dataHora, ultimoBatida);
 	}
+	
 
-	
-	
-	
-	
 	private String getDiaDaSemanaDoLocalDate(LocalDate diaDaSemana) {
 		return diaDaSemana.getDayOfWeek()
 				.getDisplayName(TextStyle.FULL, new Locale("pt", "BR"));

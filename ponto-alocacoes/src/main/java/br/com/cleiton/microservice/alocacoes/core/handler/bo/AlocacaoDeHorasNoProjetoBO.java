@@ -7,13 +7,17 @@ import java.util.stream.Collectors;
 import br.com.cleiton.microservice.alocacoes.core.commons.exception.HorasAlocadasNoProjetoInvalida;
 import br.com.cleiton.microservice.alocacoes.core.dto.AlocacaoProjetoCoreDTO;
 import lombok.val;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class AlocacaoDeHorasNoProjetoBO {
 
+	// SINGLETON
+	
 	private static AlocacaoDeHorasNoProjetoBO instance;
 	
 	private AlocacaoDeHorasNoProjetoBO() {
-		
+		log.info("Singleton instanciado");
 	}
 	
 	public static AlocacaoDeHorasNoProjetoBO  getInstance() {

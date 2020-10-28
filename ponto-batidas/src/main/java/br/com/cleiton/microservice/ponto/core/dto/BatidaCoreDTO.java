@@ -6,16 +6,24 @@ import br.com.cleiton.microservice.ponto.core.dto.enums.BatidaTipoMarcacao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class BatidaCoreDTO {
 
 	private LocalDateTime marcadoEm;
 	private BatidaTipoMarcacao tipo;
+	
+	public BatidaCoreDTO() {
+		this.tipo = BatidaTipoMarcacao.ENTRADA_ALMOCO;
+	}
+	
+	public BatidaCoreDTO(LocalDateTime marcadoEm) {
+		this.marcadoEm = marcadoEm;
+		this.tipo = BatidaTipoMarcacao.ENTRADA_ALMOCO;
+	}
+	
 	
 	
 }
