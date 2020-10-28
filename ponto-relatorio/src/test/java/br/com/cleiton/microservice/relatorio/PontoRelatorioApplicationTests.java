@@ -1,4 +1,4 @@
-package br.com.cleiton.microservice.alocarhora;
+package br.com.cleiton.microservice.relatorio;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
