@@ -1,11 +1,9 @@
 package br.com.cleiton.microservice.ponto.inbound.rest.batida.adapter;
 
-import static java.util.stream.Collectors.toList;
 import static org.springframework.http.HttpStatus.CREATED;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,14 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.cleiton.microservice.ponto.core.dto.DiaDeTrabalhoCoreDTO;
 import br.com.cleiton.microservice.ponto.core.port.inbound.BatidaPortInbound;
 import br.com.cleiton.microservice.ponto.inbound.rest.batida.adapter.bo.InboundRestBO;
 import br.com.cleiton.microservice.ponto.inbound.rest.batida.json.request.BatidaRequestJson;
-import br.com.cleiton.microservice.ponto.inbound.rest.batida.json.response.BatidasResponseJson;
 import br.com.cleiton.microservice.ponto.inbound.rest.batida.json.response.DiaDeTrabalhoResponseJson;
 import br.com.cleiton.microservice.ponto.inbound.rest.batida.json.response.JornadaResponseJson;
 import br.com.cleiton.microservice.ponto.inbound.rest.batida.mapper.InboundRestMapper;
@@ -78,7 +75,7 @@ public class BatidaInboundRestAdapter {
 
 
 
-	@GetMapping("tempo")
+	@GetMapping("/tempo")
 	public ResponseEntity<JornadaResponseJson> jornada(
 			@RequestParam("dia") Integer dia,
 			@RequestParam("mes") Integer mes,

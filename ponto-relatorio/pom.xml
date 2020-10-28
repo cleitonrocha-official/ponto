@@ -20,6 +20,8 @@
 	</properties>
 
 	<dependencies>
+	
+		<!-- LIB  -->
 		<dependency>
 			<groupId>br.com.cleiton</groupId>
 			<artifactId>ponto-commons</artifactId>

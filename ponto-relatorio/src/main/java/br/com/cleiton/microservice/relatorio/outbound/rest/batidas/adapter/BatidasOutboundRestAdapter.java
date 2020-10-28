@@ -30,7 +30,7 @@ public class BatidasOutboundRestAdapter implements BatidasPortOutbound {
 		headers.set("Authorization", "Bearer" + details.getTokenValue());
 		var client = new RestTemplate();
 		var entity = new HttpEntity<>(null, headers);
-		var url = String.format("http://localhost:8080/%s",mesAno);
+		var url = String.format("http://localhost:8080/batidas/%s",mesAno);
 		val diasDeTrabalho = client.exchange(url, HttpMethod.GET, entity, DiaDeTrabalhoResponseJson[].class).getBody();
 		
 		return Arrays.asList(diasDeTrabalho).stream()
