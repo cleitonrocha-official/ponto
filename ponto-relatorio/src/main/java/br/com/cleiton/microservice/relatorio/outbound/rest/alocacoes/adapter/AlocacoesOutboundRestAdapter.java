@@ -31,7 +31,7 @@ public class AlocacoesOutboundRestAdapter implements AlocacoesPortOutbound {
 		headers.set("Authorization", "Bearer" + details.getTokenValue());
 		var client = new RestTemplate();
 		var entity = new HttpEntity<>(null, headers);
-		var url = String.format("http://localhost:8081/%s",mesAno);
+		var url = String.format("http://localhost:8081/alocacoes/%s",mesAno);
 		val alocacoes = client.exchange(url, HttpMethod.GET, entity, AlocacaoHorasTrabalhadaResponseJson[].class).getBody();
 		
 		return Arrays.asList(alocacoes).stream()
